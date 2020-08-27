@@ -2,14 +2,16 @@
 // Created by Maikol Guzman on 8/20/20.
 //
 
-#include "Person.h"
+#include "Person.h"//Calling Person Class .h
+// Constructors with out parameters
+Person::Person() {
 
-Person::Person() {}
-
+}
+// Constructors with parameters
 Person::Person(const std::string &firstName, const std::string &lastName, int documentId) : firstName(firstName),
                                                                                             lastName(lastName),
                                                                                             documentId(documentId) {}
-
+// Gets and Sets methods
 const std::string &Person::getFirstName() const {
     return firstName;
 }
@@ -34,21 +36,23 @@ void Person::setDocumentId(int documentId) {
     Person::documentId = documentId;
 }
 
-std::string Person::toString() const {
-    return getFirstName() + " " + getLastName() + "\nDoc Id: " + std::to_string(getDocumentId());
-}
-
+//Dependency methods returnin string
 std::string Person::processPaymentBankTransfer() {
-    BankTransferSender bankTransferSender;
-    return bankTransferSender.sendPayment();
+   return _iSend0->sendPayment();
 }
 
 std::string Person::processPaymentCash() {
-    CashSender cashSender;
-    return cashSender.sendPayment();
+    return _iSend1->sendPayment();
 }
 
-std::string Person::processPaymentCheck() {
-    CheckSender checkSender;
-    return checkSender.sendPayment();
+std::string  Person::processPaymentCheck() {
+    return _iSend2->sendPayment();
+}
+//String Method returning string
+std::string Person::toString() const {
+    std::stringstream salida;
+    salida<<"Name      :  "<<Person::getFirstName()<<"\n";
+    salida<<"Last-Name :  "<<Person::getLastName()<<"\n";
+    salida<<"ID Number :  "<<Person::getDocumentId()<<"\n";
+    return salida.str();
 }

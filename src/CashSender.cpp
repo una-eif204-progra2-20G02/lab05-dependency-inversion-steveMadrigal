@@ -2,8 +2,14 @@
 // Created by Maikol Guzman on 8/24/20.
 //
 
-#include "CashSender.h"
+#include "CashSender.h"//Calling CashSender Class .h
 
-std::string CashSender::sendPayment() const {
-    return "Give the money in the hands";
+CashSender::CashSender():ISend(){//Constructor in Inheritance with ISen Class
+
+}
+CashSender::~CashSender() {//Destructor of Class
+
+}
+std::string CashSender::sendPayment() const {//String method
+    return "Give the money in the hands";//String argument
 }
